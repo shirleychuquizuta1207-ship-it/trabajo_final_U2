@@ -1,0 +1,482 @@
+---
+title: "Reanálisis estadístico de un experimento factorial en el cultivo de arroz (Oryza sativa L.)"
+author: "Miguel, Shirley, Karol y Nilver"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+# Análisis de diseño experimental
+
+## Base de datos
+
+> https://docs.google.com/spreadsheets/d/1OfkLo4ozbimtAVg_0SNqieB5AmgUkxXv1k8Mt1kc1Po/edit?gid=0#gid=0
+
+## Identificar los factores
+
+1. Factor A: Variedad de arroz
+   - a1: Capirona
+   - a2: Mallares
+
+2. Factor B: Distanciamiento de siembra
+   - b1: 0,20 × 0,20 m
+   - b2: 0,25 × 0,25 m
+
+3. Factor C: Fertilización
+   - c1: 120-60-90 NPK
+   - c2: 150-80-100 NPK
+
+## Identificar el modelo
+
+Diseño de Bloques Completos al Azar (DBCA) con arreglo factorial 2 × 2 × 2.
+
+$$
+Y = \mu + bloque + A + B + C + A*B + A*C + B*C + A*B*C + \xi
+$$
+# Project setup
+```{r}
+#| label: setup
+
+source('https://inkaverse.com/setup.r')
+```
+
+# Activar los paquetes
+```{r}
+
+library(googlesheets4)
+library(dplyr)
+library(emmeans)
+library(multcomp)
+library(ggplot2)
+
+gs4_deauth()
+
+gs <- "https://docs.google.com/spreadsheets/d/1OfkLo4ozbimtAVg_0SNqieB5AmgUkxXv1k8Mt1kc1Po/edit?usp=sharing" %>%
+  as_sheets_id()
+
+fb <- gs %>%
+  range_read(
+    ss = .,
+    sheet = "fb",
+    col_types = "c"
+  ) %>%
+  mutate(
+    across(
+      c(blq, trat, variedad,
+        distanciamiento, fertilizacion),
+      ~ as.factor(.x)
+    ),
+    across(
+      c(macollos_pct, altura_m, emerg_panoja_dias,
+        floracion50_dias, long_panoja_cm,
+        peso1000_g, rendimiento_t_ha, calidad_molienda_pct),
+      ~ as.numeric(gsub(",", ".", .x))
+    )
+  )
+
+# Verificar los datos
+str(fb)
+summary(fb$macollos_pct)
+head(fb$macollos_pct)
+```
+
+1. Porcentaje de macollos
+
+# Análisis de variancia
+
+```{r}
+# aov() ó lm()
+
+fb_factorial <- fb %>%
+  droplevels()
+
+md <- aov(macollos_pct ~ blq +
+            variedad * distanciamiento * fertilizacion,
+          data = fb)
+
+anova(md)
+```
+
+# Comparación de medias
+
+```{r}
+mc <- emmeans(md, ~ variedad * distanciamiento * fertilizacion)
+
+# Letras de significancia
+tab <- multcomp::cld(mc,
+                     adjust = "tukey",
+                     Letters = letters,
+                     decreasing = TRUE)
+
+tab
+```
+
+# Representación gráfica
+
+```{r}
+# Interacción A × B × C
+
+pl <- plot_smr(
+  data = tab,
+  x = "variedad",
+  y = "emmean",
+  group = "distanciamiento",
+  error = "SE",
+  sig = ".group",
+  ylab = "Macollos"
+) +
+  ggplot2::facet_wrap(~ fertilizacion) +
+  ggplot2::labs(y = "Macollos (%)")
+
+pl
+```
+2. Altura de planta
+
+# Análisis de variancia
+
+```{r}
+# aov() ó lm()
+
+fb_factorial <- fb %>%
+  droplevels()
+
+md <- aov(altura_m ~ blq +
+            variedad * distanciamiento * fertilizacion,
+          data = fb)
+
+anova(md)
+```
+
+# Comparación de medias
+
+```{r}
+mc <- emmeans(md, ~ variedad * distanciamiento * fertilizacion)
+
+# Letras de significancia
+tab <- multcomp::cld(mc,
+                     adjust = "tukey",
+                     Letters = letters,
+                     decreasing = TRUE)
+
+tab
+```
+
+# Representación gráfica
+
+```{r}
+# Interacción A × B × C
+
+pl <- plot_smr(
+  data = tab,
+  x = "variedad",
+  y = "emmean",
+  group = "distanciamiento",
+  error = "SE",
+  sig = ".group",
+  ylab = "Altura"
+) +
+  ggplot2::facet_wrap(~ fertilizacion) +
+  ggplot2::labs(y = "Altura de planta (m)")
+
+pl
+```
+3. Días a emergencia de panoja
+
+# Análisis de variancia
+
+```{r}
+# aov() ó lm()
+
+fb_factorial <- fb %>%
+  droplevels()
+
+md <- aov(emerg_panoja_dias ~ blq +
+            variedad * distanciamiento * fertilizacion,
+          data = fb)
+
+anova(md)
+```
+
+# Comparación de medias
+
+```{r}
+mc <- emmeans(md, ~ variedad * distanciamiento * fertilizacion)
+
+# Letras de significancia
+tab <- multcomp::cld(mc,
+                     adjust = "tukey",
+                     Letters = letters,
+                     decreasing = TRUE)
+
+tab
+```
+
+# Representación gráfica
+
+```{r}
+# Interacción A × B × C
+
+pl <- plot_smr(
+  data = tab,
+  x = "variedad",
+  y = "emmean",
+  group = "distanciamiento",
+  error = "SE",
+  sig = ".group",
+  ylab = "Dias"
+) +
+  ggplot2::facet_wrap(~ fertilizacion) +
+  ggplot2::labs(y = "Días a emergencia de panoja (%)")
+
+pl
+```
+4. Días al 50 % de floración
+
+# Análisis de variancia
+
+```{r}
+# aov() ó lm()
+
+fb_factorial <- fb %>%
+  droplevels()
+
+md <- aov(floracion50_dias ~ blq +
+            variedad * distanciamiento * fertilizacion,
+          data = fb)
+
+anova(md)
+```
+
+# Comparación de medias
+
+```{r}
+mc <- emmeans(md, ~ variedad * distanciamiento * fertilizacion)
+
+# Letras de significancia
+tab <- multcomp::cld(mc,
+                     adjust = "tukey",
+                     Letters = letters,
+                     decreasing = TRUE)
+
+tab
+```
+
+# Representación gráfica
+
+```{r}
+# Interacción A × B × C
+
+pl <- plot_smr(
+  data = tab,
+  x = "variedad",
+  y = "emmean",
+  group = "distanciamiento",
+  error = "SE",
+  sig = ".group",
+  ylab = "Dias"
+) +
+  ggplot2::facet_wrap(~ fertilizacion) +
+  ggplot2::labs(y = "Días al 50 % de floración")
+
+pl
+```
+5. Longitud de panoja
+
+# Análisis de variancia
+
+```{r}
+# aov() ó lm()
+
+fb_factorial <- fb %>%
+  droplevels()
+
+md <- aov(long_panoja_cm ~ blq +
+            variedad * distanciamiento * fertilizacion,
+          data = fb)
+
+anova(md)
+```
+
+# Comparación de medias
+
+```{r}
+mc <- emmeans(md, ~ variedad * distanciamiento * fertilizacion)
+
+# Letras de significancia
+tab <- multcomp::cld(mc,
+                     adjust = "tukey",
+                     Letters = letters,
+                     decreasing = TRUE)
+
+tab
+```
+
+# Representación gráfica
+
+```{r}
+# Interacción A × B × C
+
+pl <- plot_smr(
+  data = tab,
+  x = "variedad",
+  y = "emmean",
+  group = "distanciamiento",
+  error = "SE",
+  sig = ".group",
+  ylab = "Longitud"
+) +
+  ggplot2::facet_wrap(~ fertilizacion) +
+  ggplot2::labs(y = "Longitud de panoja (cm)")
+
+pl
+```
+6. Peso de mil granos
+
+# Análisis de variancia
+
+```{r}
+# aov() ó lm()
+
+fb_factorial <- fb %>%
+  droplevels()
+
+md <- aov(peso1000_g ~ blq +
+            variedad * distanciamiento * fertilizacion,
+          data = fb)
+
+anova(md)
+```
+
+# Comparación de medias
+
+```{r}
+mc <- emmeans(md, ~ variedad * distanciamiento * fertilizacion)
+
+# Letras de significancia
+tab <- multcomp::cld(mc,
+                     adjust = "tukey",
+                     Letters = letters,
+                     decreasing = TRUE)
+
+tab
+```
+
+# Representación gráfica
+
+```{r}
+# Interacción A × B × C
+
+pl <- plot_smr(
+  data = tab,
+  x = "variedad",
+  y = "emmean",
+  group = "distanciamiento",
+  error = "SE",
+  sig = ".group",
+  ylab = "Peso"
+) +
+  ggplot2::facet_wrap(~ fertilizacion) +
+  ggplot2::labs(y = "Peso de mil granos (g)")
+
+pl
+```
+7. Rendimiento de grano
+
+# Análisis de variancia
+
+```{r}
+# aov() ó lm()
+
+fb_factorial <- fb %>%
+  droplevels()
+
+md <- aov(rendimiento_t_ha ~ blq +
+            variedad * distanciamiento * fertilizacion,
+          data = fb)
+
+anova(md)
+```
+
+# Comparación de medias
+
+```{r}
+mc <- emmeans(md, ~ variedad * distanciamiento * fertilizacion)
+
+# Letras de significancia
+tab <- multcomp::cld(mc,
+                     adjust = "tukey",
+                     Letters = letters,
+                     decreasing = TRUE)
+
+tab
+```
+
+# Representación gráfica
+
+```{r}
+# Interacción A × B × C
+
+pl <- plot_smr(
+  data = tab,
+  x = "variedad",
+  y = "emmean",
+  group = "distanciamiento",
+  error = "SE",
+  sig = ".group",
+  ylab = "Rendimiento"
+) +
+  ggplot2::facet_wrap(~ fertilizacion) +
+  ggplot2::labs(y = "Rendimiento de grano (t/ha)")
+
+pl
+```
+8. Calidad de molienda (%)
+
+# Análisis de variancia
+
+```{r}
+# aov() ó lm()
+
+fb_factorial <- fb %>%
+  droplevels()
+
+md <- aov(calidad_molienda_pct ~ blq +
+            variedad * distanciamiento * fertilizacion,
+          data = fb)
+
+anova(md)
+```
+
+# Comparación de medias
+
+```{r}
+mc <- emmeans(md, ~ variedad * distanciamiento * fertilizacion)
+
+# Letras de significancia
+tab <- multcomp::cld(mc,
+                     adjust = "tukey",
+                     Letters = letters,
+                     decreasing = TRUE)
+
+tab
+```
+
+# Representación gráfica
+
+```{r}
+# Interacción A × B × C
+
+pl <- plot_smr(
+  data = tab,
+  x = "variedad",
+  y = "emmean",
+  group = "distanciamiento",
+  error = "SE",
+  sig = ".group",
+  ylab = "Calidad"
+) +
+  ggplot2::facet_wrap(~ fertilizacion) +
+  ggplot2::labs(y = "Calidad de molienda (%)")
+
+pl
+```

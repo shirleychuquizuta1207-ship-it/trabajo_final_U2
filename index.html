@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Miguel, Shirley, Karol y Nilver">
+
+<title>Reanálisis estadístico de un experimento factorial en el cultivo de arroz (Oryza sativa L.)</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap-215b371544c282197b31c8aa00ce3677.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Reanálisis estadístico de un experimento factorial en el cultivo de arroz (Oryza sativa L.)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Miguel, Shirley, Karol y Nilver </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="análisis-de-diseño-experimental" class="level1">
+<h1>Análisis de diseño experimental</h1>
+<section id="base-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="base-de-datos">Base de datos</h2>
+<blockquote class="blockquote">
+<p>https://docs.google.com/spreadsheets/d/1OfkLo4ozbimtAVg_0SNqieB5AmgUkxXv1k8Mt1kc1Po/edit?gid=0#gid=0</p>
+</blockquote>
+</section>
+<section id="identificar-los-factores" class="level2">
+<h2 class="anchored" data-anchor-id="identificar-los-factores">Identificar los factores</h2>
+<ol type="1">
+<li>Factor A: Variedad de arroz
+<ul>
+<li>a1: Capirona</li>
+<li>a2: Mallares</li>
+</ul></li>
+<li>Factor B: Distanciamiento de siembra
+<ul>
+<li>b1: 0,20 × 0,20 m</li>
+<li>b2: 0,25 × 0,25 m</li>
+</ul></li>
+<li>Factor C: Fertilización
+<ul>
+<li>c1: 120-60-90 NPK</li>
+<li>c2: 150-80-100 NPK</li>
+</ul></li>
+</ol>
+</section>
+<section id="identificar-el-modelo" class="level2">
+<h2 class="anchored" data-anchor-id="identificar-el-modelo">Identificar el modelo</h2>
+<p>Diseño de Bloques Completos al Azar (DBCA) con arreglo factorial 2 × 2 × 2.</p>
+<p><span class="math display">\[
+Y = \mu + bloque + A + B + C + A*B + A*C + B*C + A*B*C + \xi
+\]</span> # Project setup</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">'https://inkaverse.com/setup.r'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'car':
+  method           from
+  na.action.merMod lme4</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ The googlesheets4 package is using a cached token for
+  'shirleychuquizuta1207@gmail.com'.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Project directory:  D:/A- SHIRLEY/UNIVERSIDAD/VIII CICLO/PROGRAMACIÓN Y ANÁLISIS DE DATOS/I UNIDAD/git/trabajo_final_U2 
+CPU cores detected:  4 
+CPU cores in use:  3 
+─ Session info ───────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.6.1 (2026-06-24 ucrt)
+ os       Windows 10 x64 (build 19045)
+ system   x86_64, mingw32
+ ui       RTerm
+ language (EN)
+ collate  Spanish_Peru.utf8
+ ctype    Spanish_Peru.utf8
+ tz       America/Lima
+ date     2026-10-30
+ pandoc   3.10 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
+ quarto   1.10.18 @ C:\\PROGRA~1\\RStudio\\RESOUR~1\\app\\bin\\quarto\\bin\\quarto.exe
+
+─ Packages ───────────────────────────────────────────────────────────────────
+ package       * version date (UTC) lib source
+ abind           1.4-8   2024-09-12 [1] CRAN (R 4.6.1)
+ agricolae       1.3-7   2023-10-22 [1] CRAN (R 4.6.1)
+ AlgDesign       1.2.1.2 2025-04-06 [1] CRAN (R 4.6.1)
+ askpass         1.2.1   2024-10-04 [1] CRAN (R 4.6.1)
+ boot            1.3-32  2025-08-29 [2] CRAN (R 4.6.1)
+ cachem          1.1.0   2024-05-16 [1] CRAN (R 4.6.1)
+ car           * 3.1-5   2026-02-03 [1] CRAN (R 4.6.1)
+ carData       * 3.0-6   2026-01-30 [1] CRAN (R 4.6.1)
+ cellranger      1.1.0   2016-07-27 [1] CRAN (R 4.6.1)
+ cli             3.6.6   2026-04-09 [1] CRAN (R 4.6.1)
+ cluster         2.1.8.3 2026-07-30 [1] CRAN (R 4.6.1)
+ codetools       0.2-20  2024-03-31 [2] CRAN (R 4.6.1)
+ cowplot       * 1.2.0   2025-07-07 [1] CRAN (R 4.6.1)
+ curl            8.1.0   2026-10-14 [1] CRAN (R 4.6.1)
+ devtools      * 2.5.2   2026-04-30 [1] CRAN (R 4.6.1)
+ digest          0.6.39  2025-11-19 [1] CRAN (R 4.6.1)
+ dplyr         * 1.2.1   2026-04-03 [1] CRAN (R 4.6.1)
+ DT              0.34.0  2025-09-02 [1] CRAN (R 4.6.1)
+ ellipsis        0.3.3   2026-04-04 [1] CRAN (R 4.6.1)
+ emmeans       * 2.0.4   2026-07-15 [1] CRAN (R 4.6.1)
+ estimability    2.0.0   2026-06-26 [1] CRAN (R 4.6.1)
+ evaluate        1.0.5   2025-08-27 [1] CRAN (R 4.6.1)
+ FactoMineR    * 2.18    2026-10-14 [1] CRAN (R 4.6.1)
+ farver          2.1.2   2024-05-13 [1] CRAN (R 4.6.1)
+ fastmap         1.2.0   2024-05-15 [1] CRAN (R 4.6.1)
+ flashClust      1.1-4   2026-03-03 [1] CRAN (R 4.6.1)
+ forcats       * 1.0.1   2025-09-25 [1] CRAN (R 4.6.1)
+ Formula         1.2-6   2026-08-03 [1] CRAN (R 4.6.1)
+ fs              2.1.0   2026-04-18 [1] CRAN (R 4.6.1)
+ gargle          1.6.1   2026-01-29 [1] CRAN (R 4.6.1)
+ generics        0.1.4   2025-05-09 [1] CRAN (R 4.6.1)
+ ggplot2       * 4.0.3   2026-04-22 [1] CRAN (R 4.6.1)
+ ggrepel         0.9.8   2026-03-17 [1] CRAN (R 4.6.1)
+ glue            1.8.1   2026-04-17 [1] CRAN (R 4.6.1)
+ googledrive   * 2.1.2   2025-09-10 [1] CRAN (R 4.6.1)
+ googlesheets4 * 1.1.2   2025-09-03 [1] CRAN (R 4.6.1)
+ gtable          0.3.6   2024-10-25 [1] CRAN (R 4.6.1)
+ hms             1.1.4   2025-10-17 [1] CRAN (R 4.6.1)
+ htmltools       0.5.9   2025-12-04 [1] CRAN (R 4.6.1)
+ htmlwidgets     1.6.4   2023-12-06 [1] CRAN (R 4.6.1)
+ httpuv          1.6.17  2026-03-18 [1] CRAN (R 4.6.1)
+ httr            1.4.9   2026-09-01 [1] CRAN (R 4.6.1)
+ huito         * 0.2.8   2026-09-30 [1] CRAN (R 4.6.1)
+ inti          * 0.7.5   2026-09-30 [1] CRAN (R 4.6.1)
+ irlba           2.4.1   2026-10-05 [1] CRAN (R 4.6.1)
+ jsonlite        2.0.0   2025-03-27 [1] CRAN (R 4.6.1)
+ knitr         * 1.52    2026-09-06 [1] CRAN (R 4.6.1)
+ later           1.4.8   2026-03-05 [1] CRAN (R 4.6.1)
+ lattice         0.23-1  2026-08-12 [1] CRAN (R 4.6.1)
+ leaps           3.2     2024-06-10 [1] CRAN (R 4.6.1)
+ lifecycle       1.0.5   2026-01-08 [1] CRAN (R 4.6.1)
+ lme4          * 2.1-0   2026-10-23 [1] CRAN (R 4.6.1)
+ lubridate     * 1.9.5   2026-02-04 [1] CRAN (R 4.6.1)
+ magick        * 2.9.1   2026-02-28 [1] CRAN (R 4.6.1)
+ magrittr        2.0.5   2026-04-04 [1] CRAN (R 4.6.1)
+ MASS          * 7.3-66  2026-07-15 [1] CRAN (R 4.6.1)
+ Matrix        * 1.7-6   2026-07-25 [1] CRAN (R 4.6.1)
+ memoise         2.0.1   2021-11-26 [1] CRAN (R 4.6.1)
+ mime            0.13    2025-03-17 [1] CRAN (R 4.6.1)
+ minqa           1.2.8   2024-08-17 [1] CRAN (R 4.6.1)
+ mnormt          2.1.2   2026-01-27 [1] CRAN (R 4.6.1)
+ multcomp      * 1.4-32  2026-08-21 [1] CRAN (R 4.6.1)
+ multcompView    0.1-12  2026-07-26 [1] CRAN (R 4.6.1)
+ mvtnorm       * 1.4-2   2026-07-12 [1] CRAN (R 4.6.1)
+ nlme            3.1-171 2026-09-01 [1] CRAN (R 4.6.1)
+ nloptr          2.2.1   2025-03-17 [1] CRAN (R 4.6.1)
+ openssl         2.4.2   2026-06-09 [1] CRAN (R 4.6.1)
+ otel            0.2.0   2025-08-29 [1] CRAN (R 4.6.1)
+ pillar          1.11.1  2025-09-17 [1] CRAN (R 4.6.1)
+ pkgbuild        1.4.8   2025-05-26 [1] CRAN (R 4.6.1)
+ pkgconfig       2.0.3   2019-09-22 [1] CRAN (R 4.6.1)
+ pkgload         1.5.3   2026-06-15 [1] CRAN (R 4.6.1)
+ promises        1.5.0   2025-11-01 [1] CRAN (R 4.6.1)
+ psych         * 2.6.9   2026-09-30 [1] CRAN (R 4.6.1)
+ purrr         * 1.2.2   2026-04-10 [1] CRAN (R 4.6.1)
+ R6              2.6.1   2025-02-15 [1] CRAN (R 4.6.1)
+ rappdirs        0.3.4   2026-01-17 [1] CRAN (R 4.6.1)
+ rbibutils       2.4.1   2026-01-21 [1] CRAN (R 4.6.1)
+ RColorBrewer    1.1-3   2022-04-03 [1] CRAN (R 4.6.1)
+ Rcpp            1.1.2   2026-07-05 [1] CRAN (R 4.6.1)
+ Rdpack          2.6.6   2026-02-08 [1] CRAN (R 4.6.1)
+ readr         * 2.2.0   2026-02-19 [1] CRAN (R 4.6.1)
+ reformulas      0.4.4   2026-02-02 [1] CRAN (R 4.6.1)
+ RhpcBLASctl   * 0.23-42 2023-02-11 [1] CRAN (R 4.6.1)
+ rlang           1.3.0   2026-07-05 [1] CRAN (R 4.6.1)
+ rmarkdown       2.32    2026-09-01 [1] CRAN (R 4.6.1)
+ rstudioapi      0.19.0  2026-06-11 [1] CRAN (R 4.6.1)
+ S7              0.2.2   2026-04-22 [1] CRAN (R 4.6.1)
+ sandwich        3.1-3   2026-08-03 [1] CRAN (R 4.6.1)
+ scales          1.4.0   2025-04-24 [1] CRAN (R 4.6.1)
+ scatterplot3d   0.3-45  2026-02-23 [1] CRAN (R 4.6.1)
+ sessioninfo   * 1.2.4   2026-06-04 [1] CRAN (R 4.6.1)
+ shiny         * 1.14.0  2026-06-21 [1] CRAN (R 4.6.1)
+ showtext        0.9-8   2026-03-21 [1] CRAN (R 4.6.1)
+ showtextdb      3.0     2020-06-04 [1] CRAN (R 4.6.1)
+ stringi         1.8.9   2026-08-04 [1] CRAN (R 4.6.1)
+ stringr       * 1.6.0   2025-11-04 [1] CRAN (R 4.6.1)
+ survival      * 3.8-12  2026-09-09 [1] CRAN (R 4.6.1)
+ sysfonts        0.8.9   2024-03-02 [1] CRAN (R 4.6.1)
+ TH.data       * 1.1-5   2025-11-17 [1] CRAN (R 4.6.1)
+ tibble        * 3.3.1   2026-01-11 [1] CRAN (R 4.6.1)
+ tidyr         * 1.3.2   2025-12-19 [1] CRAN (R 4.6.1)
+ tidyselect      1.2.1   2024-03-11 [1] CRAN (R 4.6.1)
+ tidyverse     * 2.0.0   2023-02-22 [1] CRAN (R 4.6.1)
+ timechange      0.4.0   2026-01-29 [1] CRAN (R 4.6.1)
+ tzdb            0.5.0   2025-03-15 [1] CRAN (R 4.6.1)
+ usethis       * 3.2.2   2026-09-10 [1] CRAN (R 4.6.1)
+ vctrs           0.7.3   2026-04-11 [1] CRAN (R 4.6.1)
+ withr           3.0.3   2026-06-19 [1] CRAN (R 4.6.1)
+ xfun            0.62    2026-10-16 [1] CRAN (R 4.6.1)
+ xtable          1.8-8   2026-02-22 [1] CRAN (R 4.6.1)
+ yaml            2.3.12  2025-12-10 [1] CRAN (R 4.6.1)
+ zoo             1.9-1   2026-09-25 [1] CRAN (R 4.6.1)
+
+ [1] C:/Users/Elmer Chuquizuta/AppData/Local/R/win-library/4.6
+ [2] C:/Program Files/R/R-4.6.1/library
+ * ── Packages attached to the search path.
+
+──────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="activar-los-paquetes" class="level1">
+<h1>Activar los paquetes</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(googlesheets4)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcomp)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">gs4_deauth</span>()</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>gs <span class="ot">&lt;-</span> <span class="st">"https://docs.google.com/spreadsheets/d/1OfkLo4ozbimtAVg_0SNqieB5AmgUkxXv1k8Mt1kc1Po/edit?usp=sharing"</span> <span class="sc">%&gt;%</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_sheets_id</span>()</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>fb <span class="ot">&lt;-</span> gs <span class="sc">%&gt;%</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">range_read</span>(</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">ss =</span> .,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">sheet =</span> <span class="st">"fb"</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_types =</span> <span class="st">"c"</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(blq, trat, variedad,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        distanciamiento, fertilizacion),</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">as.factor</span>(.x)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(macollos_pct, altura_m, emerg_panoja_dias,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>        floracion50_dias, long_panoja_cm,</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        peso1000_g, rendimiento_t_ha, calidad_molienda_pct),</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">","</span>, <span class="st">"."</span>, .x))</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ Reading from "Trabajo_final_U2".</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ Range ''fb''.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar los datos</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(fb)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [32 × 13] (S3: tbl_df/tbl/data.frame)
+ $ blq                 : Factor w/ 4 levels "1","2","3","4": 1 1 1 1 1 1 1 1 2 2 ...
+ $ trat                : Factor w/ 8 levels "T1","T2","T3",..: 1 2 3 4 5 6 7 8 1 2 ...
+ $ variedad            : Factor w/ 2 levels "Capirona","Mallares": 1 1 1 1 2 2 2 2 1 1 ...
+ $ distanciamiento     : Factor w/ 2 levels "0,20 × 0,20 m",..: 1 1 2 2 1 1 2 2 1 1 ...
+ $ fertilizacion       : Factor w/ 2 levels "120-60-90 NPK",..: 1 2 1 2 1 2 1 2 1 2 ...
+ $ macollos_pct        : num [1:32] 82.5 78.1 78.1 88.5 81.7 ...
+ $ altura_m            : num [1:32] 1.02 1.08 1.01 900 920 970 830 970 1.1 900 ...
+ $ emerg_panoja_dias   : num [1:32] 68 65 68 64 64 60 64 61 68 65 ...
+ $ floracion50_dias    : num [1:32] 74 74 76 74 73 71 73 72 75 74 ...
+ $ long_panoja_cm      : num [1:32] 25.2 25.5 25.3 25.6 24.2 ...
+ $ peso1000_g          : num [1:32] 26.5 26.2 26.3 25.9 26.5 ...
+ $ rendimiento_t_ha    : num [1:32] 6.59 6.6 7.66 6.58 7 ...
+ $ calidad_molienda_pct: num [1:32] 64 63 68 66 66 67 68 67 61 66 ...</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fb<span class="sc">$</span>macollos_pct)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  76.79   79.78   81.36   81.72   83.83   88.47 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fb<span class="sc">$</span>macollos_pct)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 82.532 78.095 78.136 88.473 81.733 85.714</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Porcentaje de macollos</li>
+</ol>
+</section>
+<section id="análisis-de-variancia" class="level1">
+<h1>Análisis de variancia</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># aov() ó lm()</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>fb_factorial <span class="ot">&lt;-</span> fb <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">aov</span>(macollos_pct <span class="sc">~</span> blq <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>            variedad <span class="sc">*</span> distanciamiento <span class="sc">*</span> fertilizacion,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> fb)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(md)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: macollos_pct
+                                       Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+blq                                     3 15.957   5.319  1.7585 0.1859283    
+variedad                                1 41.241  41.241 13.6344 0.0013520 ** 
+distanciamiento                         1  1.820   1.820  0.6018 0.4465527    
+fertilizacion                           1 28.163  28.163  9.3105 0.0060654 ** 
+variedad:distanciamiento                1  0.354   0.354  0.1172 0.7355030    
+variedad:fertilizacion                  1 12.939  12.939  4.2776 0.0511562 .  
+distanciamiento:fertilizacion           1 13.981  13.981  4.6223 0.0433649 *  
+variedad:distanciamiento:fertilizacion  1 58.850  58.850 19.4559 0.0002433 ***
+Residuals                              21 63.521   3.025                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="comparación-de-medias" class="level1">
+<h1>Comparación de medias</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(md, <span class="sc">~</span> variedad <span class="sc">*</span> distanciamiento <span class="sc">*</span> fertilizacion)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Letras de significancia</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> multcomp<span class="sc">::</span><span class="fu">cld</span>(mc,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">adjust =</span> <span class="st">"tukey"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Letters =</span> letters,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: adjust = "tukey" was changed to "sidak"
+because "tukey" is only appropriate for one set of pairwise comparisons</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> variedad distanciamiento fertilizacion  emmean   SE df lower.CL upper.CL
+ Mallares 0,20 × 0,20 m   150-80-100 NPK   85.0 0.87 21     82.4     87.6
+ Mallares 0,25 × 0,25 m   150-80-100 NPK   83.9 0.87 21     81.2     86.5
+ Capirona 0,25 × 0,25 m   150-80-100 NPK   83.2 0.87 21     80.6     85.9
+ Mallares 0,25 × 0,25 m   120-60-90 NPK    82.1 0.87 21     79.5     84.7
+ Capirona 0,20 × 0,20 m   120-60-90 NPK    82.0 0.87 21     79.3     84.6
+ Mallares 0,20 × 0,20 m   120-60-90 NPK    80.4 0.87 21     77.8     83.1
+ Capirona 0,25 × 0,25 m   120-60-90 NPK    78.6 0.87 21     76.0     81.2
+ Capirona 0,20 × 0,20 m   150-80-100 NPK   78.5 0.87 21     75.9     81.2
+ .group
+  a    
+  ab   
+  ab   
+  abc  
+  abc  
+   bc  
+    c  
+    c  
+
+Results are averaged over the levels of: blq 
+Confidence level used: 0.95 
+Conf-level adjustment: sidak method for 8 estimates 
+P value adjustment: tukey method for comparing a family of 8 estimates 
+significance level used: alpha = 0.05 
+NOTE: If two or more means share the same grouping symbol,
+      then we cannot show them to be different.
+      But we also did not show them to be the same. </code></pre>
+</div>
+</div>
+</section>
+<section id="representación-gráfica" class="level1">
+<h1>Representación gráfica</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Interacción A × B × C</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>pl <span class="ot">&lt;-</span> <span class="fu">plot_smr</span>(</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> tab,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"variedad"</span>,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"emmean"</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">"distanciamiento"</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">error =</span> <span class="st">"SE"</span>,</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">sig =</span> <span class="st">".group"</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Macollos"</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="sc">~</span> fertilizacion) <span class="sc">+</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Macollos (%)"</span>)</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>pl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:98.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Altura de planta</li>
+</ol>
+</section>
+<section id="análisis-de-variancia-1" class="level1">
+<h1>Análisis de variancia</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># aov() ó lm()</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>fb_factorial <span class="ot">&lt;-</span> fb <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">aov</span>(altura_m <span class="sc">~</span> blq <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>            variedad <span class="sc">*</span> distanciamiento <span class="sc">*</span> fertilizacion,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> fb)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(md)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: altura_m
+                                       Df  Sum Sq Mean Sq F value       Pr(&gt;F)
+blq                                     3   81022   27007  0.3521      0.78806
+variedad                                1 4504681 4504681 58.7262 0.0000001629
+distanciamiento                         1   54336   54336  0.7084      0.40947
+fertilizacion                           1  395414  395414  5.1549      0.03383
+variedad:distanciamiento                1   54348   54348  0.7085      0.40942
+variedad:fertilizacion                  1      49      49  0.0006      0.97999
+distanciamiento:fertilizacion           1   49539   49539  0.6458      0.43061
+variedad:distanciamiento:fertilizacion  1   49480   49480  0.6451      0.43088
+Residuals                              21 1610837   76707                     
+                                          
+blq                                       
+variedad                               ***
+distanciamiento                           
+fertilizacion                          *  
+variedad:distanciamiento                  
+variedad:fertilizacion                    
+distanciamiento:fertilizacion             
+variedad:distanciamiento:fertilizacion    
+Residuals                                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="comparación-de-medias-1" class="level1">
+<h1>Comparación de medias</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(md, <span class="sc">~</span> variedad <span class="sc">*</span> distanciamiento <span class="sc">*</span> fertilizacion)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Letras de significancia</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> multcomp<span class="sc">::</span><span class="fu">cld</span>(mc,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">adjust =</span> <span class="st">"tukey"</span>,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Letters =</span> letters,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: adjust = "tukey" was changed to "sidak"
+because "tukey" is only appropriate for one set of pairwise comparisons</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> variedad distanciamiento fertilizacion  emmean  SE df lower.CL upper.CL .group
+ Mallares 0,20 × 0,20 m   150-80-100 NPK 977.50 138 21      558     1397  a    
+ Mallares 0,25 × 0,25 m   150-80-100 NPK 970.00 138 21      551     1389  a    
+ Mallares 0,20 × 0,20 m   120-60-90 NPK  915.00 138 21      496     1334  a    
+ Mallares 0,25 × 0,25 m   120-60-90 NPK  592.83 138 21      173     1012  ab   
+ Capirona 0,25 × 0,25 m   150-80-100 NPK 225.87 138 21     -194      645   b   
+ Capirona 0,20 × 0,20 m   150-80-100 NPK 225.82 138 21     -194      645   b   
+ Capirona 0,20 × 0,20 m   120-60-90 NPK    1.06 138 21     -418      420   b   
+ Capirona 0,25 × 0,25 m   120-60-90 NPK    1.02 138 21     -418      420   b   
+
+Results are averaged over the levels of: blq 
+Confidence level used: 0.95 
+Conf-level adjustment: sidak method for 8 estimates 
+P value adjustment: tukey method for comparing a family of 8 estimates 
+significance level used: alpha = 0.05 
+NOTE: If two or more means share the same grouping symbol,
+      then we cannot show them to be different.
+      But we also did not show them to be the same. </code></pre>
+</div>
+</div>
+</section>
+<section id="representación-gráfica-1" class="level1">
+<h1>Representación gráfica</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Interacción A × B × C</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>pl <span class="ot">&lt;-</span> <span class="fu">plot_smr</span>(</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> tab,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"variedad"</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"emmean"</span>,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">"distanciamiento"</span>,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">error =</span> <span class="st">"SE"</span>,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">sig =</span> <span class="st">".group"</span>,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Altura"</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="sc">~</span> fertilizacion) <span class="sc">+</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Altura de planta (m)"</span>)</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>pl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:98.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Días a emergencia de panoja</li>
+</ol>
+</section>
+<section id="análisis-de-variancia-2" class="level1">
+<h1>Análisis de variancia</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># aov() ó lm()</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>fb_factorial <span class="ot">&lt;-</span> fb <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">aov</span>(emerg_panoja_dias <span class="sc">~</span> blq <span class="sc">+</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>            variedad <span class="sc">*</span> distanciamiento <span class="sc">*</span> fertilizacion,</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> fb)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(md)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: emerg_panoja_dias
+                                       Df Sum Sq Mean Sq  F value
+blq                                     3  1.844   0.615   1.1834
+variedad                                1 94.531  94.531 182.0201
+distanciamiento                         1  3.781   3.781   7.2808
+fertilizacion                           1 81.281  81.281 156.5072
+variedad:distanciamiento                1  2.531   2.531   4.8739
+variedad:fertilizacion                  1  0.281   0.281   0.5415
+distanciamiento:fertilizacion           1  0.281   0.281   0.5415
+variedad:distanciamiento:fertilizacion  1  0.281   0.281   0.5415
+Residuals                              21 10.906   0.519         
+                                                  Pr(&gt;F)    
+blq                                              0.33997    
+variedad                               0.000000000008154 ***
+distanciamiento                                  0.01346 *  
+fertilizacion                          0.000000000033654 ***
+variedad:distanciamiento                         0.03852 *  
+variedad:fertilizacion                           0.46993    
+distanciamiento:fertilizacion                    0.46993    
+variedad:distanciamiento:fertilizacion           0.46993    
+Residuals                                                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="comparación-de-medias-2" class="level1">
+<h1>Comparación de medias</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(md, <span class="sc">~</span> variedad <span class="sc">*</span> distanciamiento <span class="sc">*</span> fertilizacion)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Letras de significancia</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> multcomp<span class="sc">::</span><span class="fu">cld</span>(mc,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">adjust =</span> <span class="st">"tukey"</span>,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Letters =</span> letters,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: adjust = "tukey" was changed to "sidak"
+because "tukey" is only appropriate for one set of pairwise comparisons</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> variedad distanciamiento fertilizacion  emmean   SE df lower.CL upper.CL
+ Capirona 0,25 × 0,25 m   120-60-90 NPK    68.2 0.36 21     67.2     69.3
+ Capirona 0,20 × 0,20 m   120-60-90 NPK    67.8 0.36 21     66.7     68.8
+ Mallares 0,25 × 0,25 m   120-60-90 NPK    65.0 0.36 21     63.9     66.1
+ Capirona 0,20 × 0,20 m   150-80-100 NPK   64.8 0.36 21     63.7     65.8
+ Capirona 0,25 × 0,25 m   150-80-100 NPK   64.5 0.36 21     63.4     65.6
+ Mallares 0,20 × 0,20 m   120-60-90 NPK    63.8 0.36 21     62.7     64.8
+ Mallares 0,25 × 0,25 m   150-80-100 NPK   62.0 0.36 21     60.9     63.1
+ Mallares 0,20 × 0,20 m   150-80-100 NPK   60.8 0.36 21     59.7     61.8
+ .group
+  a    
+  a    
+   b   
+   b   
+   b   
+   b   
+    c  
+    c  
+
+Results are averaged over the levels of: blq 
+Confidence level used: 0.95 
+Conf-level adjustment: sidak method for 8 estimates 
+P value adjustment: tukey method for comparing a family of 8 estimates 
+significance level used: alpha = 0.05 
+NOTE: If two or more means share the same grouping symbol,
+      then we cannot show them to be different.
+      But we also did not show them to be the same. </code></pre>
+</div>
+</div>
+</section>
+<section id="representación-gráfica-2" class="level1">
+<h1>Representación gráfica</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Interacción A × B × C</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>pl <span class="ot">&lt;-</span> <span class="fu">plot_smr</span>(</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> tab,</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"variedad"</span>,</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"emmean"</span>,</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">"distanciamiento"</span>,</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">error =</span> <span class="st">"SE"</span>,</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">sig =</span> <span class="st">".group"</span>,</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Dias"</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="sc">~</span> fertilizacion) <span class="sc">+</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Días a emergencia de panoja (%)"</span>)</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>pl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:98.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Días al 50 % de floración</li>
+</ol>
+</section>
+<section id="análisis-de-variancia-3" class="level1">
+<h1>Análisis de variancia</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># aov() ó lm()</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>fb_factorial <span class="ot">&lt;-</span> fb <span class="sc">%&gt;%</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">aov</span>(floracion50_dias <span class="sc">~</span> blq <span class="sc">+</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>            variedad <span class="sc">*</span> distanciamiento <span class="sc">*</span> fertilizacion,</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> fb)</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(md)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: floracion50_dias
+                                       Df Sum Sq Mean Sq F value        Pr(&gt;F)
+blq                                     3  5.344   1.781  2.8983      0.059110
+variedad                                1 47.531  47.531 77.3390 0.00000001748
+distanciamiento                         1  7.031   7.031 11.4407      0.002812
+fertilizacion                           1 16.531  16.531 26.8983 0.00003865059
+variedad:distanciamiento                1  0.281   0.281  0.4576      0.506118
+variedad:fertilizacion                  1  0.031   0.031  0.0508      0.823775
+distanciamiento:fertilizacion           1  0.781   0.781  1.2712      0.272262
+variedad:distanciamiento:fertilizacion  1  0.031   0.031  0.0508      0.823775
+Residuals                              21 12.906   0.615                      
+                                          
+blq                                    .  
+variedad                               ***
+distanciamiento                        ** 
+fertilizacion                          ***
+variedad:distanciamiento                  
+variedad:fertilizacion                    
+distanciamiento:fertilizacion             
+variedad:distanciamiento:fertilizacion    
+Residuals                                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="comparación-de-medias-3" class="level1">
+<h1>Comparación de medias</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(md, <span class="sc">~</span> variedad <span class="sc">*</span> distanciamiento <span class="sc">*</span> fertilizacion)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Letras de significancia</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> multcomp<span class="sc">::</span><span class="fu">cld</span>(mc,</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">adjust =</span> <span class="st">"tukey"</span>,</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Letters =</span> letters,</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: adjust = "tukey" was changed to "sidak"
+because "tukey" is only appropriate for one set of pairwise comparisons</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> variedad distanciamiento fertilizacion  emmean    SE df lower.CL upper.CL
+ Capirona 0,25 × 0,25 m   120-60-90 NPK    75.8 0.392 21     74.6     76.9
+ Capirona 0,20 × 0,20 m   120-60-90 NPK    74.8 0.392 21     73.6     75.9
+ Capirona 0,25 × 0,25 m   150-80-100 NPK   74.0 0.392 21     72.8     75.2
+ Capirona 0,20 × 0,20 m   150-80-100 NPK   73.5 0.392 21     72.3     74.7
+ Mallares 0,25 × 0,25 m   120-60-90 NPK    73.5 0.392 21     72.3     74.7
+ Mallares 0,20 × 0,20 m   120-60-90 NPK    72.0 0.392 21     70.8     73.2
+ Mallares 0,25 × 0,25 m   150-80-100 NPK   71.8 0.392 21     70.6     72.9
+ Mallares 0,20 × 0,20 m   150-80-100 NPK   71.0 0.392 21     69.8     72.2
+ .group
+  a    
+  ab   
+  ab   
+   bc  
+   bc  
+    cd 
+    cd 
+     d 
+
+Results are averaged over the levels of: blq 
+Confidence level used: 0.95 
+Conf-level adjustment: sidak method for 8 estimates 
+P value adjustment: tukey method for comparing a family of 8 estimates 
+significance level used: alpha = 0.05 
+NOTE: If two or more means share the same grouping symbol,
+      then we cannot show them to be different.
+      But we also did not show them to be the same. </code></pre>
+</div>
+</div>
+</section>
+<section id="representación-gráfica-3" class="level1">
+<h1>Representación gráfica</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Interacción A × B × C</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>pl <span class="ot">&lt;-</span> <span class="fu">plot_smr</span>(</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> tab,</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"variedad"</span>,</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"emmean"</span>,</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">"distanciamiento"</span>,</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">error =</span> <span class="st">"SE"</span>,</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">sig =</span> <span class="st">".group"</span>,</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Dias"</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="sc">~</span> fertilizacion) <span class="sc">+</span></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Días al 50 % de floración"</span>)</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>pl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:98.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Longitud de panoja</li>
+</ol>
+</section>
+<section id="análisis-de-variancia-4" class="level1">
+<h1>Análisis de variancia</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># aov() ó lm()</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>fb_factorial <span class="ot">&lt;-</span> fb <span class="sc">%&gt;%</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">aov</span>(long_panoja_cm <span class="sc">~</span> blq <span class="sc">+</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>            variedad <span class="sc">*</span> distanciamiento <span class="sc">*</span> fertilizacion,</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> fb)</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(md)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: long_panoja_cm
+                                       Df Sum Sq Mean Sq F value     Pr(&gt;F)    
+blq                                     3 0.0366  0.0122  0.0811    0.96957    
+variedad                                1 4.8828  4.8828 32.4908 0.00001172 ***
+distanciamiento                         1 0.1378  0.1378  0.9170    0.34915    
+fertilizacion                           1 0.7503  0.7503  4.9927    0.03646 *  
+variedad:distanciamiento                1 0.0153  0.0153  0.1019    0.75273    
+variedad:fertilizacion                  1 0.0253  0.0253  0.1684    0.68567    
+distanciamiento:fertilizacion           1 0.0378  0.0378  0.2516    0.62116    
+variedad:distanciamiento:fertilizacion  1 0.0003  0.0003  0.0021    0.96406    
+Residuals                              21 3.1559  0.1503                       
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="comparación-de-medias-4" class="level1">
+<h1>Comparación de medias</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(md, <span class="sc">~</span> variedad <span class="sc">*</span> distanciamiento <span class="sc">*</span> fertilizacion)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Letras de significancia</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> multcomp<span class="sc">::</span><span class="fu">cld</span>(mc,</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">adjust =</span> <span class="st">"tukey"</span>,</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Letters =</span> letters,</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: adjust = "tukey" was changed to "sidak"
+because "tukey" is only appropriate for one set of pairwise comparisons</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> variedad distanciamiento fertilizacion  emmean    SE df lower.CL upper.CL
+ Capirona 0,25 × 0,25 m   150-80-100 NPK   25.7 0.194 21     25.1     26.3
+ Capirona 0,20 × 0,20 m   150-80-100 NPK   25.6 0.194 21     25.1     26.2
+ Capirona 0,25 × 0,25 m   120-60-90 NPK    25.4 0.194 21     24.8     26.0
+ Capirona 0,20 × 0,20 m   120-60-90 NPK    25.2 0.194 21     24.6     25.8
+ Mallares 0,25 × 0,25 m   150-80-100 NPK   24.9 0.194 21     24.3     25.5
+ Mallares 0,20 × 0,20 m   150-80-100 NPK   24.8 0.194 21     24.2     25.4
+ Mallares 0,25 × 0,25 m   120-60-90 NPK    24.7 0.194 21     24.1     25.3
+ Mallares 0,20 × 0,20 m   120-60-90 NPK    24.4 0.194 21     23.9     25.0
+ .group
+  a    
+  a    
+  ab   
+  abc  
+  abc  
+  abc  
+   bc  
+    c  
+
+Results are averaged over the levels of: blq 
+Confidence level used: 0.95 
+Conf-level adjustment: sidak method for 8 estimates 
+P value adjustment: tukey method for comparing a family of 8 estimates 
+significance level used: alpha = 0.05 
+NOTE: If two or more means share the same grouping symbol,
+      then we cannot show them to be different.
+      But we also did not show them to be the same. </code></pre>
+</div>
+</div>
+</section>
+<section id="representación-gráfica-4" class="level1">
+<h1>Representación gráfica</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Interacción A × B × C</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>pl <span class="ot">&lt;-</span> <span class="fu">plot_smr</span>(</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> tab,</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"variedad"</span>,</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"emmean"</span>,</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">"distanciamiento"</span>,</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">error =</span> <span class="st">"SE"</span>,</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">sig =</span> <span class="st">".group"</span>,</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Longitud"</span></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="sc">~</span> fertilizacion) <span class="sc">+</span></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Longitud de panoja (cm)"</span>)</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>pl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:98.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="6" type="1">
+<li>Peso de mil granos</li>
+</ol>
+</section>
+<section id="análisis-de-variancia-5" class="level1">
+<h1>Análisis de variancia</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># aov() ó lm()</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>fb_factorial <span class="ot">&lt;-</span> fb <span class="sc">%&gt;%</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">aov</span>(peso1000_g <span class="sc">~</span> blq <span class="sc">+</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>            variedad <span class="sc">*</span> distanciamiento <span class="sc">*</span> fertilizacion,</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> fb)</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(md)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: peso1000_g
+                                       Df Sum Sq Mean Sq F value Pr(&gt;F)
+blq                                     3 0.3776 0.12586  0.6960 0.5648
+variedad                                1 0.0512 0.05120  0.2831 0.6002
+distanciamiento                         1 0.3872 0.38720  2.1411 0.1582
+fertilizacion                           1 0.1653 0.16531  0.9141 0.3499
+variedad:distanciamiento                1 0.0041 0.00405  0.0224 0.8825
+variedad:fertilizacion                  1 0.0406 0.04061  0.2246 0.6405
+distanciamiento:fertilizacion           1 0.0171 0.01711  0.0946 0.7614
+variedad:distanciamiento:fertilizacion  1 0.1275 0.12751  0.7051 0.4105
+Residuals                              21 3.7976 0.18084               </code></pre>
+</div>
+</div>
+</section>
+<section id="comparación-de-medias-5" class="level1">
+<h1>Comparación de medias</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(md, <span class="sc">~</span> variedad <span class="sc">*</span> distanciamiento <span class="sc">*</span> fertilizacion)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Letras de significancia</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> multcomp<span class="sc">::</span><span class="fu">cld</span>(mc,</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">adjust =</span> <span class="st">"tukey"</span>,</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Letters =</span> letters,</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: adjust = "tukey" was changed to "sidak"
+because "tukey" is only appropriate for one set of pairwise comparisons</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> variedad distanciamiento fertilizacion  emmean    SE df lower.CL upper.CL
+ Capirona 0,25 × 0,25 m   120-60-90 NPK    26.8 0.213 21     26.1     27.4
+ Capirona 0,25 × 0,25 m   150-80-100 NPK   26.6 0.213 21     26.0     27.2
+ Mallares 0,25 × 0,25 m   120-60-90 NPK    26.6 0.213 21     25.9     27.2
+ Mallares 0,20 × 0,20 m   120-60-90 NPK    26.6 0.213 21     25.9     27.2
+ Mallares 0,25 × 0,25 m   150-80-100 NPK   26.6 0.213 21     25.9     27.2
+ Capirona 0,20 × 0,20 m   150-80-100 NPK   26.4 0.213 21     25.8     27.1
+ Capirona 0,20 × 0,20 m   120-60-90 NPK    26.4 0.213 21     25.8     27.1
+ Mallares 0,20 × 0,20 m   150-80-100 NPK   26.2 0.213 21     25.5     26.8
+ .group
+  a    
+  a    
+  a    
+  a    
+  a    
+  a    
+  a    
+  a    
+
+Results are averaged over the levels of: blq 
+Confidence level used: 0.95 
+Conf-level adjustment: sidak method for 8 estimates 
+P value adjustment: tukey method for comparing a family of 8 estimates 
+significance level used: alpha = 0.05 
+NOTE: If two or more means share the same grouping symbol,
+      then we cannot show them to be different.
+      But we also did not show them to be the same. </code></pre>
+</div>
+</div>
+</section>
+<section id="representación-gráfica-5" class="level1">
+<h1>Representación gráfica</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Interacción A × B × C</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>pl <span class="ot">&lt;-</span> <span class="fu">plot_smr</span>(</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> tab,</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"variedad"</span>,</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"emmean"</span>,</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">"distanciamiento"</span>,</span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">error =</span> <span class="st">"SE"</span>,</span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">sig =</span> <span class="st">".group"</span>,</span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Peso"</span></span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="sc">~</span> fertilizacion) <span class="sc">+</span></span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Peso de mil granos (g)"</span>)</span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a>pl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:98.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="7" type="1">
+<li>Rendimiento de grano</li>
+</ol>
+</section>
+<section id="análisis-de-variancia-6" class="level1">
+<h1>Análisis de variancia</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># aov() ó lm()</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>fb_factorial <span class="ot">&lt;-</span> fb <span class="sc">%&gt;%</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">aov</span>(rendimiento_t_ha <span class="sc">~</span> blq <span class="sc">+</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>            variedad <span class="sc">*</span> distanciamiento <span class="sc">*</span> fertilizacion,</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> fb)</span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(md)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: rendimiento_t_ha
+                                       Df Sum Sq Mean Sq  F value
+blq                                     3 0.1880  0.0627   1.5333
+variedad                                1 1.0549  1.0549  25.8051
+distanciamiento                         1 0.1791  0.1791   4.3813
+fertilizacion                           1 0.8444  0.8444  20.6551
+variedad:distanciamiento                1 0.0187  0.0187   0.4580
+variedad:fertilizacion                  1 0.0747  0.0747   1.8271
+distanciamiento:fertilizacion           1 4.1920  4.1920 102.5465
+variedad:distanciamiento:fertilizacion  1 0.2824  0.2824   6.9077
+Residuals                              21 0.8585  0.0409         
+                                               Pr(&gt;F)    
+blq                                         0.2352204    
+variedad                               0.000049646483 ***
+distanciamiento                             0.0486558 *  
+fertilizacion                               0.0001767 ***
+variedad:distanciamiento                    0.5059614    
+variedad:fertilizacion                      0.1908466    
+distanciamiento:fertilizacion          0.000000001554 ***
+variedad:distanciamiento:fertilizacion      0.0157116 *  
+Residuals                                                
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="comparación-de-medias-6" class="level1">
+<h1>Comparación de medias</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(md, <span class="sc">~</span> variedad <span class="sc">*</span> distanciamiento <span class="sc">*</span> fertilizacion)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Letras de significancia</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> multcomp<span class="sc">::</span><span class="fu">cld</span>(mc,</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">adjust =</span> <span class="st">"tukey"</span>,</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Letters =</span> letters,</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: adjust = "tukey" was changed to "sidak"
+because "tukey" is only appropriate for one set of pairwise comparisons</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> variedad distanciamiento fertilizacion  emmean    SE df lower.CL upper.CL
+ Mallares 0,25 × 0,25 m   120-60-90 NPK    8.09 0.101 21     7.79     8.40
+ Mallares 0,20 × 0,20 m   150-80-100 NPK   7.57 0.101 21     7.27     7.88
+ Capirona 0,25 × 0,25 m   120-60-90 NPK    7.49 0.101 21     7.19     7.80
+ Mallares 0,20 × 0,20 m   120-60-90 NPK    7.08 0.101 21     6.77     7.39
+ Capirona 0,20 × 0,20 m   150-80-100 NPK   7.07 0.101 21     6.76     7.37
+ Mallares 0,25 × 0,25 m   150-80-100 NPK   6.76 0.101 21     6.45     7.07
+ Capirona 0,20 × 0,20 m   120-60-90 NPK    6.76 0.101 21     6.45     7.07
+ Capirona 0,25 × 0,25 m   150-80-100 NPK   6.73 0.101 21     6.42     7.04
+ .group
+  a    
+   b   
+   bc  
+    cd 
+    cd 
+     d 
+     d 
+     d 
+
+Results are averaged over the levels of: blq 
+Confidence level used: 0.95 
+Conf-level adjustment: sidak method for 8 estimates 
+P value adjustment: tukey method for comparing a family of 8 estimates 
+significance level used: alpha = 0.05 
+NOTE: If two or more means share the same grouping symbol,
+      then we cannot show them to be different.
+      But we also did not show them to be the same. </code></pre>
+</div>
+</div>
+</section>
+<section id="representación-gráfica-6" class="level1">
+<h1>Representación gráfica</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Interacción A × B × C</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>pl <span class="ot">&lt;-</span> <span class="fu">plot_smr</span>(</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> tab,</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"variedad"</span>,</span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"emmean"</span>,</span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">"distanciamiento"</span>,</span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">error =</span> <span class="st">"SE"</span>,</span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">sig =</span> <span class="st">".group"</span>,</span>
+<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Rendimiento"</span></span>
+<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="sc">~</span> fertilizacion) <span class="sc">+</span></span>
+<span id="cb62-13"><a href="#cb62-13" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Rendimiento de grano (t/ha)"</span>)</span>
+<span id="cb62-14"><a href="#cb62-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-15"><a href="#cb62-15" aria-hidden="true" tabindex="-1"></a>pl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:98.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="8" type="1">
+<li>Calidad de molienda (%)</li>
+</ol>
+</section>
+<section id="análisis-de-variancia-7" class="level1">
+<h1>Análisis de variancia</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># aov() ó lm()</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>fb_factorial <span class="ot">&lt;-</span> fb <span class="sc">%&gt;%</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">aov</span>(calidad_molienda_pct <span class="sc">~</span> blq <span class="sc">+</span></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>            variedad <span class="sc">*</span> distanciamiento <span class="sc">*</span> fertilizacion,</span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> fb)</span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(md)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: calidad_molienda_pct
+                                       Df Sum Sq Mean Sq F value       Pr(&gt;F)
+blq                                     3  3.844   1.281  0.7098    0.5569421
+variedad                                1 13.781  13.781  7.6348    0.0116529
+distanciamiento                         1 94.531  94.531 52.3702 0.0000003953
+fertilizacion                           1  5.281   5.281  2.9258    0.1019083
+variedad:distanciamiento                1 34.031  34.031 18.8533    0.0002868
+variedad:fertilizacion                  1  0.281   0.281  0.1558    0.6970224
+distanciamiento:fertilizacion           1 13.781  13.781  7.6348    0.0116529
+variedad:distanciamiento:fertilizacion  1  0.281   0.281  0.1558    0.6970224
+Residuals                              21 37.906   1.805                     
+                                          
+blq                                       
+variedad                               *  
+distanciamiento                        ***
+fertilizacion                             
+variedad:distanciamiento               ***
+variedad:fertilizacion                    
+distanciamiento:fertilizacion          *  
+variedad:distanciamiento:fertilizacion    
+Residuals                                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="comparación-de-medias-7" class="level1">
+<h1>Comparación de medias</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(md, <span class="sc">~</span> variedad <span class="sc">*</span> distanciamiento <span class="sc">*</span> fertilizacion)</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Letras de significancia</span></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> multcomp<span class="sc">::</span><span class="fu">cld</span>(mc,</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">adjust =</span> <span class="st">"tukey"</span>,</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Letters =</span> letters,</span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: adjust = "tukey" was changed to "sidak"
+because "tukey" is only appropriate for one set of pairwise comparisons</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> variedad distanciamiento fertilizacion  emmean    SE df lower.CL upper.CL
+ Capirona 0,25 × 0,25 m   120-60-90 NPK    68.8 0.672 21     66.7     70.8
+ Capirona 0,25 × 0,25 m   150-80-100 NPK   68.2 0.672 21     66.2     70.3
+ Mallares 0,25 × 0,25 m   120-60-90 NPK    68.0 0.672 21     66.0     70.0
+ Mallares 0,25 × 0,25 m   150-80-100 NPK   67.5 0.672 21     65.5     69.5
+ Mallares 0,20 × 0,20 m   150-80-100 NPK   67.2 0.672 21     65.2     69.3
+ Mallares 0,20 × 0,20 m   120-60-90 NPK    65.5 0.672 21     63.5     67.5
+ Capirona 0,20 × 0,20 m   150-80-100 NPK   64.2 0.672 21     62.2     66.3
+ Capirona 0,20 × 0,20 m   120-60-90 NPK    61.8 0.672 21     59.7     63.8
+ .group
+  a    
+  ab   
+  ab   
+  ab   
+  abc  
+   bc  
+    cd 
+     d 
+
+Results are averaged over the levels of: blq 
+Confidence level used: 0.95 
+Conf-level adjustment: sidak method for 8 estimates 
+P value adjustment: tukey method for comparing a family of 8 estimates 
+significance level used: alpha = 0.05 
+NOTE: If two or more means share the same grouping symbol,
+      then we cannot show them to be different.
+      But we also did not show them to be the same. </code></pre>
+</div>
+</div>
+</section>
+<section id="representación-gráfica-7" class="level1">
+<h1>Representación gráfica</h1>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Interacción A × B × C</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>pl <span class="ot">&lt;-</span> <span class="fu">plot_smr</span>(</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> tab,</span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"variedad"</span>,</span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"emmean"</span>,</span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">"distanciamiento"</span>,</span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">error =</span> <span class="st">"SE"</span>,</span>
+<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">sig =</span> <span class="st">".group"</span>,</span>
+<span id="cb69-10"><a href="#cb69-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Calidad"</span></span>
+<span id="cb69-11"><a href="#cb69-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb69-12"><a href="#cb69-12" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="sc">~</span> fertilizacion) <span class="sc">+</span></span>
+<span id="cb69-13"><a href="#cb69-13" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Calidad de molienda (%)"</span>)</span>
+<span id="cb69-14"><a href="#cb69-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-15"><a href="#cb69-15" aria-hidden="true" tabindex="-1"></a>pl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:98.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
